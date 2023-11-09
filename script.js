@@ -5,7 +5,7 @@ const main = () => {
     var secondsLeft = d.getTime() - Date.now();
     secondsLeft = Math.floor(secondsLeft / 1000);
     console.log(secondsLeft.toString().length);
-    counterbox.style.width = (counter.offsetWidth * (secondsLeft.toString().length - 1) - 2).toString() + "px";
+    counterbox.style.width = (counter.offsetWidth * (secondsLeft.toString().length - 1) - 4).toString() + "px";
     counter.innerHTML = secondsLeft.toString();
 
     update(counter);
