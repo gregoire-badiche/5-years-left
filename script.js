@@ -12,6 +12,7 @@ const main = () => {
 }
 
 var interval;
+var dateThen = (new Date(2028, 6, 3, 15)).getTime()
 
 const update = c => {
     var datenow = Date.now();
@@ -22,7 +23,7 @@ const update = c => {
         update(c);
     }, delta);
 
-    var secondsLeft = 1845385200000 - datenow;
+    var secondsLeft = dateThen - datenow;
     secondsLeft = Math.floor(secondsLeft / 1000);
     var strSecondsLeft = secondsLeft.toString();
     var state = 0;
