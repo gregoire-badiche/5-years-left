@@ -1,7 +1,7 @@
 const main = () => {
     const counter = document.getElementsByClassName("counter")[0];
     const counterbox = document.getElementsByClassName("counterbox")[0];
-    var d = new Date(2028, 5, 23, 17);
+    var d = new Date(2028, 6, 3, 17);
     var secondsLeft = d.getTime() - Date.now();
     secondsLeft = Math.floor(secondsLeft / 1000);
     console.log(secondsLeft.toString().length);
@@ -12,7 +12,7 @@ const main = () => {
 }
 
 var interval;
-var dateThen = (new Date(2028, 6, 3, 15)).getTime()
+var dateThen = (new Date(2028, 6, 3, 17)).getTime()
 
 const update = c => {
     var datenow = Date.now();
