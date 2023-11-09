@@ -1,12 +1,17 @@
 const main = () => {
-    const counter = document.getElementsByClassName("counter")[0]
+    const counter = document.getElementsByClassName("counter")[0];
+    const counterbox = document.getElementsByClassName("counterbox")[0];
     var d = new Date(2028, 5, 23, 17);
     var secondsLeft = d.getTime() - Date.now();
     secondsLeft = Math.floor(secondsLeft / 1000);
+    console.log(secondsLeft.toString().length);
+    counterbox.style.width = (counter.offsetWidth * (secondsLeft.toString().length - 1) - 2).toString() + "px";
     counter.innerHTML = secondsLeft.toString();
 
     update(counter);
 }
+
+var interval;
 
 const update = c => {
     var datenow = Date.now();
@@ -17,11 +22,34 @@ const update = c => {
         update(c);
     }, delta);
 
-    console.log(delta);
-
     var secondsLeft = 1845385200000 - datenow;
     secondsLeft = Math.floor(secondsLeft / 1000);
-    c.innerHTML = secondsLeft.toString();
+    var strSecondsLeft = secondsLeft.toString();
+    var state = 0;
+    var speed = strSecondsLeft.length;
+    for (let i = 0; i < strSecondsLeft.length; i++) {
+        if(strSecondsLeft[i] != c.innerHTML[i]) {
+            speed -= i;
+            break
+        }
+    }
+    clearInterval(interval);
+    interval = setInterval(() => {
+        if(strSecondsLeft.includes(c.innerHTML)) {
+            if(strSecondsLeft == c.innerHTML) {
+                clearInterval(interval);
+            }
+            else {
+                if(state == 0) {
+                    state = 1;
+                } else {
+                    c.innerHTML += strSecondsLeft[c.innerHTML.length];
+                }
+            }
+        } else {
+            c.innerHTML = c.innerHTML.substring(0, c.innerHTML.length - 1);
+        }
+    }, 1 / (speed * 2 + 1) * 500);
 }
 
 document.addEventListener("DOMContentLoaded", _e => main());
