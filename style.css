@@ -28,6 +28,8 @@
 * {
     font-family: monospace;
     font-size: 20px;
+    background-color: #000;
+    color: #fff;
 }
 
 html, body, .wrapper {
@@ -63,16 +65,16 @@ html, body, .wrapper {
 }
 
 .counter {
-    border-right: 2px solid #000;
+    border-right: 2px solid #fff;
     animation: .7s steps(1) infinite blink;
 }
 
 @keyframes blink {
     0% {
-        border-color: #000;
+        border-color: #fff;
     }
     50% {
-        border-color: #fff;
+        border-color: #000;
     }
 }
 
