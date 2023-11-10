@@ -1,56 +1,54 @@
 const main = () => {
     const counter = document.getElementsByClassName("counter")[0];
-    const counterbox = document.getElementsByClassName("counterbox")[0];
     var d = new Date(2028, 6, 3, 17);
     var secondsLeft = d.getTime() - Date.now();
+    counter.style.height = counter.offsetHeight.toString() + "px";
+    var height = counter.offsetHeight.toString() + "px";
+    document.querySelector(':root').style.setProperty('--h', height)
+    counter.innerHTML = '';
+    for (let j = 0; j < 9; j++) {
+        const number = document.createElement('span');
+        number.className = "number";
+        for (let i = 0; i < 10; i++) {
+            const digit = document.createElement('span');
+            digit.className = "digit";
+            let t = document.createTextNode(i.toString())
+            digit.appendChild(t);
+            number.appendChild(digit);
+        }
+        counter.appendChild(number);
+    }
     secondsLeft = Math.floor(secondsLeft / 1000);
-    console.log(secondsLeft.toString().length);
-    counterbox.style.width = (counter.offsetWidth * (secondsLeft.toString().length - 1) - 4).toString() + "px";
-    counter.innerHTML = secondsLeft.toString();
+    var strSecondsLeft = secondsLeft.toString();
+    var numbers = document.getElementsByClassName("number")
 
-    update(counter);
+    for (let i = 0; i < strSecondsLeft.length; i++) {
+        numbers[i].setAttribute('n', strSecondsLeft[i])
+    }
+    // counter.innerHTML = secondsLeft.toString();
+
+    update(secondsLeft, numbers);
 }
 
 var interval;
 var dateThen = (new Date(2028, 6, 3, 17)).getTime()
 
-const update = c => {
+const update = (dateprev, numbers) => {
     var datenow = Date.now();
-    var nextdate = Math.floor(datenow / 1000 + 1) * 1000 + 10
-    var delta = nextdate - datenow;
-
-    setTimeout(() => {
-        update(c);
-    }, delta);
-
-    var secondsLeft = dateThen - datenow;
+    var secondsLeft = dateThen - Date.now();
     secondsLeft = Math.floor(secondsLeft / 1000);
-    var strSecondsLeft = secondsLeft.toString();
-    var state = 0;
-    var speed = strSecondsLeft.length;
-    for (let i = 0; i < strSecondsLeft.length; i++) {
-        if(strSecondsLeft[i] != c.innerHTML[i]) {
-            speed -= i;
-            break
+
+    if (secondsLeft != dateprev) {
+        var strSecondsLeft = secondsLeft.toString();
+
+        for (let i = 0; i < strSecondsLeft.length; i++) {
+            numbers[i].setAttribute('n', strSecondsLeft[i])
         }
+
+        dateprev = datenow;
     }
-    clearInterval(interval);
-    interval = setInterval(() => {
-        if(strSecondsLeft.includes(c.innerHTML)) {
-            if(strSecondsLeft == c.innerHTML) {
-                clearInterval(interval);
-            }
-            else {
-                if(state == 0) {
-                    state = 1;
-                } else {
-                    c.innerHTML += strSecondsLeft[c.innerHTML.length];
-                }
-            }
-        } else {
-            c.innerHTML = c.innerHTML.substring(0, c.innerHTML.length - 1);
-        }
-    }, 1 / (speed * 2 + 1) * 500);
+
+    window.requestAnimationFrame(() => update(dateprev, numbers))
 }
 
 document.addEventListener("DOMContentLoaded", _e => main());

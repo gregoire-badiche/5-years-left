@@ -56,24 +56,50 @@ html, body, .wrapper {
     text-align: right;
 }
 
-.counterbox {
+.counter {
+    display: grid;
+    grid-template-columns: repeat(9, auto);
     grid-column: 2;
     grid-row: 1;
     text-align: left;
+    overflow: hidden;
 }
 
-.counter {
-    border-right: 2px solid #000;
-    animation: .7s steps(1) infinite blink;
+.number {
+    display: grid;
+    grid-template-rows: repeat(10, auto);
+    transition: all 200ms;
 }
 
-@keyframes blink {
-    0% {
-        border-color: #000;
-    }
-    50% {
-        border-color: #fff;
-    }
+.number[n="0"] {
+    transform: translateY(0);
+}
+.number[n="1"] {
+    transform: translateY(calc(-1 * var(--h)));
+}
+.number[n="2"] {
+    transform: translateY(calc(-2 * var(--h)));
+}
+.number[n="3"] {
+    transform: translateY(calc(-3 * var(--h)));
+}
+.number[n="4"] {
+    transform: translateY(calc(-4 * var(--h)));
+}
+.number[n="5"] {
+    transform: translateY(calc(-5 * var(--h)));
+}
+.number[n="6"] {
+    transform: translateY(calc(-6 * var(--h)));
+}
+.number[n="7"] {
+    transform: translateY(calc(-7 * var(--h)));
+}
+.number[n="8"] {
+    transform: translateY(calc(-8 * var(--h)));
+}
+.number[n="9"] {
+    transform: translateY(calc(-9 * var(--h)));
 }
 
 .after {
