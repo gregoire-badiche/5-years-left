@@ -51,4 +51,4 @@ const update = (dateprev, numbers) => {
     window.requestAnimationFrame(() => update(dateprev, numbers))
 }
 
-document.addEventListener("DOMContentLoaded", _e => main());
+window.onload = () => main();
