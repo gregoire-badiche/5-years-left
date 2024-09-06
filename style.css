@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @media (min-width: 600px) {
     .container {
         grid-template-columns: auto auto auto auto;
@@ -26,13 +28,18 @@
 }
 
 * {
-    font-family: monospace;
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
     font-size: 20px;
     background-color: #000;
     color: #fff;
 }
 
-html, body, .wrapper {
+html,
+body,
+.wrapper {
     min-width: 100vw;
     min-height: 100vh;
     margin: 0;
@@ -76,30 +83,39 @@ html, body, .wrapper {
 .number[n="0"] {
     transform: translateY(0);
 }
+
 .number[n="1"] {
     transform: translateY(calc(-1 * var(--h)));
 }
+
 .number[n="2"] {
     transform: translateY(calc(-2 * var(--h)));
 }
+
 .number[n="3"] {
     transform: translateY(calc(-3 * var(--h)));
 }
+
 .number[n="4"] {
     transform: translateY(calc(-4 * var(--h)));
 }
+
 .number[n="5"] {
     transform: translateY(calc(-5 * var(--h)));
 }
+
 .number[n="6"] {
     transform: translateY(calc(-6 * var(--h)));
 }
+
 .number[n="7"] {
     transform: translateY(calc(-7 * var(--h)));
 }
+
 .number[n="8"] {
     transform: translateY(calc(-8 * var(--h)));
 }
+
 .number[n="9"] {
     transform: translateY(calc(-9 * var(--h)));
 }

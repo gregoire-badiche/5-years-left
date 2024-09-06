@@ -2,8 +2,8 @@ const main = () => {
     const counter = document.getElementsByClassName("counter")[0];
     var d = new Date(2028, 6, 3, 17);
     var secondsLeft = d.getTime() - Date.now();
-    counter.style.height = counter.offsetHeight.toString() + "px";
-    var height = counter.offsetHeight.toString() + "px";
+    var height = counter.getBoundingClientRect().height.toString() + "px";
+    counter.style.height = height;
     document.querySelector(':root').style.setProperty('--h', height)
     counter.innerHTML = '';
     for (let j = 0; j < 9; j++) {
